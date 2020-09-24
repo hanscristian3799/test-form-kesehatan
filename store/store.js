@@ -1,6 +1,7 @@
 export const state = () => ({
     nama: null,
     telepon: null,
+    email: null,
     cabang: null,
     meetup: null, 
     reason_desc: null,
@@ -13,6 +14,9 @@ export const mutations = {
     },
     setCabang(state, payload){
         state.cabang = payload;
+    },
+    setEmail(state, payload){
+        state.email = payload;
     },
     setTelepon(state, payload){
         state.telepon = payload;

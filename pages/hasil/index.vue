@@ -8,6 +8,7 @@
                     <v-flex>
                         <h2>{{ nama }}</h2>
                         <h2>{{ telepon }}</h2>
+                        <h2>{{ email }}</h2>
                         <h2>Cabang : {{ cabang }}</h2> 
                         <h2 v-if="meetup != 'Others'">Bertemu Dengan: {{ meetup }}</h2> 
                         <h2 v-else>Bertemu Dengan: {{ reason }}</h2>
@@ -36,6 +37,9 @@ export default {
         },
         telepon(){
           return this.$store.state.store.telepon;
+        },
+        email(){
+          return this.$store.state.store.email;
         },
         cabang(){
           return this.$store.state.store.cabang;

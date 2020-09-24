@@ -68,7 +68,7 @@
             <div class="pa-5">
               <v-layout>
                 <v-flex> 
-                  <p>Phone Number / Nomor Telepon<label class="red--text">*</label> </p>
+                  <p>Phone Number / Nomor Telepon / HP<label class="red--text">*</label> </p>
                   <v-text-field 
                     color="amber"
                     single-line
@@ -78,6 +78,25 @@
                     @input="changeTelepon"
                     type="number"
                     :rules="[v => !!v || 'Mohon Diisi', (v) => v && v.length >= 7 || 'Panjang No Telepon Harus Lebih Besar dari 6', (v) => v && v.length <= 14 || 'Panjang No Telepon Harus Lebih Kecil dari 14']"
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+            </div>
+          </v-card>
+
+          <v-card class="mt-5">
+            <div class="pa-5">
+              <v-layout>
+                <v-flex> 
+                  <p>Email Address / Alamat Email<label class="red--text">*</label> </p>
+                  <v-text-field 
+                    color="amber"
+                    single-line
+                    label="Email"
+                    :value="email"
+                    required
+                    @input="changeEmail"
+                    :rules="[v => !!v || 'Mohon Diisi', v => /.+@.+\..+/.test(v) || 'E-mail tidak valid',]"
                   ></v-text-field>
                 </v-flex>
               </v-layout>
@@ -205,6 +224,7 @@ export default {
       tinggalpdp: null,
       tinggalbatuk: null,
       nama: null,
+      email: null,
       telepon: null,
       meetup: null, 
       sehat: null, 
@@ -234,6 +254,9 @@ export default {
     },
     changeCabang(value){
       this.cabang = value;
+    },
+    changeEmail(value){
+      this.email = value;
     },
     changeTelepon(value) {
       this.telepon = value; 
@@ -282,6 +305,7 @@ export default {
         
         this.$store.commit('store/setNama', this.nama);
         this.$store.commit('store/setTelepon', this.telepon);
+        this.$store.commit('store/setEmail', this.email);
         this.$store.commit('store/setCabang', this.cabang);
         this.$store.commit('store/setMeetup', this.meetup);
         if (this.meetup == "Others") {
